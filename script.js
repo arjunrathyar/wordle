@@ -83,6 +83,7 @@ function processInput(e){
         let currenttile = document.getElementById(row.toString() + "-" + col.toString());
         if (currenttile.innerText == ""){
           currenttile.innerText = e.code[3];
+          document.getElementById('answer').innerText = '';
           col +=1;
         }
       }
@@ -93,6 +94,7 @@ function processInput(e){
         col -=1;
         let currenttile = document.getElementById(row.toString() + "-" + col.toString());
         currenttile.innerText = "";
+        document.getElementById('answer').innerText = '';
       }
     }
 
@@ -102,7 +104,7 @@ function processInput(e){
 
     if (!gameover && row == height){
       gameover = true;
-      document.getElementById('answer').innerText = "Correct Word = " + word;
+      document.getElementById('answer').innerText = word+" was the word.. Better Luck Next Time :)";
     }
 }
 
@@ -118,6 +120,10 @@ function update(){
   }
 
   guess = guess.toLowerCase();
+  if (guess.length<5){
+    document.getElementById('answer').innerText = "This ain't a 5 Letter Word..LOL!";
+    return;
+  }
   if (!wordlist.includes(guess)){
     document.getElementById('answer').innerText = 'Not in Word List :/';
     return;
@@ -152,6 +158,12 @@ function update(){
     }
 
     if (correct == width){
+      document.getElementById('answer').innerText = 'Great Guess :0';
+      document.body.style.backgroundImage = "url('4.gif')";
+      document.body.style.backgroundSize = "200px 200px"; 
+      //document.body.style.backgroundRepeat = "repeat-x";
+      //document.body.style.backgroundPosition = "center";
+      //document.body.style.backgroundSize = "cover"
       gameover = true;
     }
   }
