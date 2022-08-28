@@ -51,17 +51,32 @@ body{
   align-items: center;
 }
 
+@keyframes flip {
+  0% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
 .correct{
+  animation: flip 0.5s ease;
   background-color: #6AAA64;
   color: white;
   border-color: white;
 }
 .present{
+  animation: flip 0.5s ease;
   background-color: #C9B458;
   color: white;
   border-color: white;
 }
 .absent{
+  animation: flip 0.5s ease;
   background-color: #787C7E;
   color: white;
   border-color: white;
